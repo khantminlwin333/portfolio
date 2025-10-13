@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   🎨 Design System — VS Code–inspired, supports light/dark
+   All colors are HSL and work with `next-themes`.
+========================================================= */
+
+@layer base {
+  :root {
+    /* 🌞 LIGHT THEME (Default) */
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 10%;
+
+    --primary: 220 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 222.2 84% 10%;
+
+    --muted: 0 0% 93%;
+    --muted-foreground: 222.2 15% 40%;
+
+    --accent: 220 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 82%;
+    --input: 0 0% 82%;
+    --ring: 220 90% 55%;
+
+    --radius: 0.25rem;
+
+    /* Code Editor (Light Mode) */
+    --editor-bg: 0 0% 98%;
+    --editor-sidebar: 0 0% 95%;
+    --editor-tab-active: 0 0% 92%;
+    --editor-tab-inactive: 0 0% 97%;
+    --editor-line-number: 220 10% 50%;
+
+    /* Syntax Highlight (Light) */
+    --syntax-keyword: 260 65% 50%;
+    --syntax-string: 140 40% 35%;
+    --syntax-function: 220 85% 45%;
+    --syntax-tag: 355 70% 45%;
+    --syntax-attribute: 29 65% 45%;
+    --syntax-comment: 220 10% 50%;
+    --syntax-number: 200 65% 40%;
+
+    /* Sidebar (Light) */
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 222.2 84% 10%;
+    --sidebar-primary: 220 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 92%;
+    --sidebar-accent-foreground: 222.2 84% 10%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 220 90% 55%;
+  }
+
+  /* 🌙 DARK THEME */
+  .dark {
+    --background: 220 13% 18%;
+    --foreground: 220 14% 96%;
+
+    --card: 220 13% 20%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 220 13% 20%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 207 100% 65%;
+    --primary-foreground: 220 13% 18%;
+
+    --secondary: 220 13% 22%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 220 13% 25%;
+    --muted-foreground: 220 9% 55%;
+
+    --accent: 207 100% 65%;
+    --accent-foreground: 220 13% 18%;
+
+    --destructive: 0 63% 60%;
+    --destructive-foreground: 220 14% 96%;
+
+    --border: 220 13% 28%;
+    --input: 220 13% 28%;
+    --ring: 207 100% 65%;
+
+    --radius: 0.25rem;
+
+    /* Code Editor (Dark Mode) */
+    --editor-bg: 220 13% 18%;
+    --editor-sidebar: 220 13% 15%;
+    --editor-tab-active: 220 13% 20%;
+    --editor-tab-inactive: 220 13% 16%;
+    --editor-line-number: 220 9% 45%;
+
+    /* Syntax Highlight (Dark) */
+    --syntax-keyword: 286 60% 67%;
+    --syntax-string: 95 38% 62%;
+    --syntax-function: 221 87% 60%;
+    --syntax-tag: 5 74% 59%;
+    --syntax-attribute: 41 99% 67%;
+    --syntax-comment: 220 9% 55%;
+    --syntax-number: 95 38% 62%;
+
+    /* Sidebar (Dark) */
+    --sidebar-background: 220 13% 15%;
+    --sidebar-foreground: 220 14% 96%;
+    --sidebar-primary: 207 100% 65%;
+    --sidebar-primary-foreground: 220 13% 18%;
+    --sidebar-accent: 220 13% 22%;
+    --sidebar-accent-foreground: 220 14% 96%;
+    --sidebar-border: 220 13% 28%;
+    --sidebar-ring: 207 100% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  }
+}
+
+/* 🔮 Syntax Highlight Classes (used in CodeView) */
+.text-syntax-tag {
+  color: hsl(var(--syntax-tag));
+}
+.text-syntax-attribute {
+  color: hsl(var(--syntax-attribute));
+}
+.text-syntax-string {
+  color: hsl(var(--syntax-string));
+}
+.text-syntax-keyword {
+  color: hsl(var(--syntax-keyword));
+}
+.text-syntax-comment {
+  color: hsl(var(--syntax-comment));
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.25s ease-out forwards;
+}
