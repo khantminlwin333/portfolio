@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import {PrivacyPolicy} from "@/components/portfolio/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,11 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              
+              {/* Hidden route - only accessible via button click */}
+              <Route path="/mtp-policies" element={<PrivacyPolicy />} />
+              
+              {/* CATCH-ALL ROUTE - MUST BE LAST */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

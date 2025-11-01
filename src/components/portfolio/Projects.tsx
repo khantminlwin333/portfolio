@@ -1,23 +1,25 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
     title: "Donation Platform",
-    description: "A full-featured Donation platform with cart, checkout, and payment integration. Built with modern technologies for optimal performance.",
+    description: "A full-featured Donation platform with cart, checkout, and payment integration.",
     tags: ["React", "Node.js", "MongoDB", "Paypal"],
     github: "https://github.com/khantminlwin333/aidfunding",
     live: "https://gazaneedus.site/donate",
-    image: "/assets/donation.png", // add image path in public/assets
+    image: "/assets/donation.png",
     isApp: false,
   },
   {
     title: "Finance Tracker App (Currently Android only)",
-    description: "Collaborative task management tool with real-time updates, currency features, and income/outcome tracking capabilities.",
+    description: "Collaborative task management tool with real-time updates and income/outcome tracking.",
     tags: ["ReactNative", "Expo", "TypeScript"],
     github: "https://github.com/khantminlwin333/MTP",
+    policies: "/mtp-policies", // This enables the Policies button
     live: "https://docs.google.com/uc?export=download&id=1R2rlyQpSpQAA76zRQzc345EXnnLMDxs9",
     image: "/assets/mtp.png",
     isApp: true,
@@ -27,22 +29,21 @@ const projects = [
     description: "Online and Offline support tool that helps people who are getting in trouble.",
     tags: ["React", "Java", "WebSocket", "NodeJs", "Firebase", "MongoDB"],
     github: "https://github.com/khantminlwin333/sosmmmobile",
+    policies: "/sos-policies", // You can add different policy routes for different apps
     live: "https://drive.usercontent.google.com/download?id=1pDDYcDSnWyNTnpjJom4HJNNrKopPaytY&export=download&authuser=0",
     image: "/assets/sosmm.png",
     isApp: true,
   },
-  {
-    title: "Myanmar Dictionary (Currently Android only)",
-    description: "Analytics dashboard for portfolio tracking with real-time data visualization and comprehensive reporting features.",
-    tags: ["ReactJs", "MongoDB", "Material UI"],
-    github: "",
-    live: "https://docs.google.com/uc?export=download&id=1jXZYyIZInDJgut0-AHKJGWZ2vk7hqbB2",
-    image: "/assets/mmmu.png",
-    isApp: true,
-  },
+  // ... other projects
 ];
 
 export const Projects = () => {
+  const navigate = useNavigate();
+
+  const handlePoliciesClick = (policiesRoute) => {
+    navigate(policiesRoute);
+  };
+
   return (
     <div className="min-h-full p-8">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -59,7 +60,7 @@ export const Projects = () => {
               key={project.title}
               className="p-6 space-y-4 hover:shadow-lg transition-shadow"
             >
-              {/* Optional project image */}
+              {/* Project image */}
               {project.image && (
                 <img
                   src={project.image}
@@ -79,7 +80,9 @@ export const Projects = () => {
                 ))}
               </div>
 
-              <div className="flex gap-3 pt-2">
+              {/* BUTTONS SECTION - All buttons together */}
+              <div className="flex gap-3 pt-2 flex-wrap">
+                {/* GitHub Code Button */}
                 {project.github && (
                   <a
                     href={project.github}
@@ -93,6 +96,7 @@ export const Projects = () => {
                   </a>
                 )}
 
+                {/* Download/Live Demo Button */}
                 {project.live && (
                   <a
                     href={project.live}
@@ -105,6 +109,19 @@ export const Projects = () => {
                     </Button>
                   </a>
                 )}
+
+                {/* Policies Button - Only for apps with policies defined */}
+                {project.policies && project.isApp && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="gap-2"
+                    onClick={() => handlePoliciesClick(project.policies)}
+                  >
+                    <FileText className="h-4 w-4" />
+                    Policies
+                  </Button>
+                )}
               </div>
             </Card>
           ))}
@@ -113,7 +130,6 @@ export const Projects = () => {
     </div>
   );
 };
-
 
 export const projectsHTML = `<!DOCTYPE html>
 <html lang="en">
