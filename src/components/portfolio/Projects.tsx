@@ -20,7 +20,7 @@ const projects = [
     tags: ["ReactNative", "Expo", "TypeScript"],
     github: "https://github.com/khantminlwin333/MTP",
     policies: "/mtp-policies", // This enables the Policies button
-    live: "https://docs.google.com/uc?export=download&id=1R2rlyQpSpQAA76zRQzc345EXnnLMDxs9",
+    live: "https://play.google.com/store/apps/details?id=com.khantminlwin.MTP",
     image: "/assets/mtp.png",
     isApp: true,
   },
